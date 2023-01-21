@@ -11,7 +11,8 @@ namespace StateParksApi.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
-
+            base.OnModelCreating(modelBuilder);
+            new StateParkDbInitializer(modelBuilder).Seed();
         }
 
         public DbSet<Park> Parks { get; set; }
