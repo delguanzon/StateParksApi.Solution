@@ -542,3 +542,5 @@ C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\State
 C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\StateParksApi\obj\Debug\net6.0\StateParksApi.Solution.pdb
 C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\StateParksApi\obj\Debug\net6.0\StateParksApi.Solution.genruntimeconfig.cache
 C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\StateParksApi\obj\Debug\net6.0\ref\StateParksApi.Solution.dll
+C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\StateParksApi\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\yodel\Desktop\ft-bootcamp\independent-proj\StateParksApi.Solution\StateParksApi\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll

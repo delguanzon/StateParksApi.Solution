@@ -1,9 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using StateParksApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<StateParksApiContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StateParksApiContext")));
+builder.Services.AddDbContext<StateParkDbContext>(dbContextOptions  =>
+    dbContextOptions.UseMySql(
+                    builder.Configuration["ConnectionStrings:DefaultConnection"], 
+                    ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+                    )
+                )
+            );
 
 // Add services to the container.
 

@@ -13,25 +13,25 @@ namespace StateParksApi.Solution.Controllers
     [ApiController]
     public class ParksController : ControllerBase
     {
-        private readonly StateParksApiContext _context;
+        private readonly StateParkDbContext _context;
 
-        public ParksController(StateParksApiContext context)
+        public ParksController(StateParkDbContext context)
         {
             _context = context;
         }
 
         // GET: api/Parks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Park>>> GetPark()
+        public async Task<ActionResult<IEnumerable<Park>>> GetParks()
         {
-            return await _context.Park.ToListAsync();
+            return await _context.Parks.ToListAsync();
         }
 
         // GET: api/Parks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Park>> GetPark(int id)
         {
-            var park = await _context.Park.FindAsync(id);
+            var park = await _context.Parks.FindAsync(id);
 
             if (park == null)
             {
@@ -77,7 +77,7 @@ namespace StateParksApi.Solution.Controllers
         [HttpPost]
         public async Task<ActionResult<Park>> PostPark(Park park)
         {
-            _context.Park.Add(park);
+            _context.Parks.Add(park);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPark", new { id = park.Id }, park);
@@ -87,13 +87,13 @@ namespace StateParksApi.Solution.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePark(int id)
         {
-            var park = await _context.Park.FindAsync(id);
+            var park = await _context.Parks.FindAsync(id);
             if (park == null)
             {
                 return NotFound();
             }
 
-            _context.Park.Remove(park);
+            _context.Parks.Remove(park);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace StateParksApi.Solution.Controllers
 
         private bool ParkExists(int id)
         {
-            return _context.Park.Any(e => e.Id == id);
+            return _context.Parks.Any(e => e.Id == id);
         }
     }
 }
