@@ -12,8 +12,9 @@ using StateParksApi.Repository;
 
 namespace StateParksApi.Solution.Controllers.v1
 {       
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class ParksController : ControllerBase
     {
         private readonly StateParkDbContext _context;
