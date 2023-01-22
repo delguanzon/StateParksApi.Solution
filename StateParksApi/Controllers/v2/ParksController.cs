@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StateParksApi.Models;
 
-namespace StateParksApi.Solution.Controllers
+namespace StateParksApi.Solution.Controllers.v2
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("2.0")]
+    [Route("api/[controller]")]
     public class ParksController : ControllerBase
     {
         private readonly StateParkDbContext _context;
