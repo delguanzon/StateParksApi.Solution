@@ -10,8 +10,8 @@ using StateParksApi.Models;
 namespace StateParksApi.Solution.Controllers.v2
 {
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("2.0")]
-    [Route("api/[controller]")]
     public class ParksController : ControllerBase
     {
         private readonly StateParkDbContext _context;

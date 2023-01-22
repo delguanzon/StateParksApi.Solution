@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XhvAZukkqyQOe7OYn8K+lvbdgqXV4pdkOYakFfpGIT3Ahle7+FWSpwSmdvbwiXaXfTgxz1ljndb5n0Jmh2XYrw==",
+  "dgSpecHash": "cqIG/zuqAiAUtrTUDjzA2k8myAJD02lMzGMlJJ8WAZ6SQ/j3p2q155UCOOIVJ0hExV2jBoHPCsiRkE0JkYpIMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\yodel\\Desktop\\ft-bootcamp\\independent-proj\\StateParksApi.Solution\\StateParksApi\\StateParksApi.Solution.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\yodel\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\yodel\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
     "C:\\Users\\yodel\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
+    "C:\\Users\\yodel\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning.apiexplorer\\5.0.0\\microsoft.aspnetcore.mvc.versioning.apiexplorer.5.0.0.nupkg.sha512",
     "C:\\Users\\yodel\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\yodel\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\yodel\\.nuget\\packages\\microsoft.build\\16.9.0\\microsoft.build.16.9.0.nupkg.sha512",
