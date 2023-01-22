@@ -3,12 +3,13 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using StateParksApi.Models;
+
 namespace StateParksApi.Repository;
 public class JWTManagerRepository : IJWTManagerRepository
 {
   Dictionary<string, string> UsersRecords = new Dictionary<string, string>
   {
-    { "admin","password1"}
+    {"admin","password"}
   };
 
   private readonly IConfiguration iconfiguration;
@@ -20,11 +21,11 @@ public class JWTManagerRepository : IJWTManagerRepository
   {
     if (!UsersRecords.Any(x => x.Key == user.Username && x.Value == user.Password)) {
       return null;
-  }
+    }
 
     // Else we generate JSON Web Token
     var tokenHandler = new JwtSecurityTokenHandler();
-    var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
+    var tokenKey = Encoding.UTF8.GetBytes("etre fort pour etre utile");
     var tokenDescriptor = new SecurityTokenDescriptor
     {
     Subject = new ClaimsIdentity(new Claim[]
