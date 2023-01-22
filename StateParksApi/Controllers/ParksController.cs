@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StateParksApi.Models;
 
 namespace StateParksApi.Solution.Controllers
@@ -22,9 +23,19 @@ namespace StateParksApi.Solution.Controllers
 
         // GET: api/Parks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Park>>> GetParks()
+        public async Task<ActionResult<IEnumerable<Park>>> GetParks( int? pageNumber, int? pageSize)
         {
-            return await _context.Parks.ToListAsync();
+            IQueryable<Park> query = _context.Parks.AsQueryable();
+            int _pageSize = pageSize ?? 5; // default page size is 5
+            var response = await PaginatedList<Park>.CreateAsync(query, pageNumber ?? 1, _pageSize > 5 ?  5 : _pageSize);
+            var metadata = new
+            {
+                response.PageIndex,
+                response.TotalPages
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            //return await query.ToListAsync();     
+            return response;
         }
 
         // GET: api/Parks/5
