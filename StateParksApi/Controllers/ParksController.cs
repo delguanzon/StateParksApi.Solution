@@ -2,23 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using StateParksApi.Models;
+using StateParksApi.Repository;
 
 namespace StateParksApi.Solution.Controllers
-{
+{   
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ParksController : ControllerBase
     {
         private readonly StateParkDbContext _context;
+        private readonly IJWTManagerRepository _jWTManager;
 
-        public ParksController(StateParkDbContext context)
+        public ParksController(StateParkDbContext context, IJWTManagerRepository jWTManager)
         {
             _context = context;
+            _jWTManager = jWTManager;
         }
 
         // GET: api/Parks
@@ -113,6 +118,21 @@ namespace StateParksApi.Solution.Controllers
         private bool ParkExists(int id)
         {
             return _context.Parks.Any(e => e.Id == id);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("authenticate")]
+        public IActionResult Authenticate(User usersdata)
+        {
+            var token = _jWTManager.Authenticate(usersdata);
+
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(token);
         }
     }
 }
