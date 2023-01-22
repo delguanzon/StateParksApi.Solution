@@ -10,9 +10,8 @@ using Newtonsoft.Json;
 using StateParksApi.Models;
 using StateParksApi.Repository;
 
-namespace StateParksApi.Solution.Controllers
-{   
-    [Authorize]
+namespace StateParksApi.Solution.Controllers.v1
+{       
     [Route("api/[controller]")]
     [ApiController]
     public class ParksController : ControllerBase
@@ -120,19 +119,5 @@ namespace StateParksApi.Solution.Controllers
             return _context.Parks.Any(e => e.Id == id);
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("authenticate")]
-        public IActionResult Authenticate(User usersdata)
-        {
-            var token = _jWTManager.Authenticate(usersdata);
-
-            if (token == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok(token);
-        }
     }
 }
