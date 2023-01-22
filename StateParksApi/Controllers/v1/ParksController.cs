@@ -2,45 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using StateParksApi.Models;
-using StateParksApi.Repository;
 
-namespace StateParksApi.Solution.Controllers
-{   
-    [Authorize]
-    [Route("api/[controller]")]
+namespace StateParksApi.Solution.Controllers.v1
+{
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     public class ParksController : ControllerBase
     {
         private readonly StateParkDbContext _context;
-        private readonly IJWTManagerRepository _jWTManager;
 
-        public ParksController(StateParkDbContext context, IJWTManagerRepository jWTManager)
+        public ParksController(StateParkDbContext context)
         {
             _context = context;
-            _jWTManager = jWTManager;
         }
 
         // GET: api/Parks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Park>>> GetParks( int? pageNumber, int? pageSize)
+        public async Task<ActionResult<IEnumerable<Park>>> GetParks()
         {
-            IQueryable<Park> query = _context.Parks.AsQueryable();
-            int _pageSize = pageSize ?? 5; // default page size is 5
-            var response = await PaginatedList<Park>.CreateAsync(query, pageNumber ?? 1, _pageSize > 5 ?  5 : _pageSize);
-            var metadata = new
-            {
-                response.PageIndex,
-                response.TotalPages
-            };
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
-            //return await query.ToListAsync();     
-            return response;
+            return await _context.Parks.ToListAsync();
         }
 
         // GET: api/Parks/5
@@ -118,21 +103,6 @@ namespace StateParksApi.Solution.Controllers
         private bool ParkExists(int id)
         {
             return _context.Parks.Any(e => e.Id == id);
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("authenticate")]
-        public IActionResult Authenticate(User usersdata)
-        {
-            var token = _jWTManager.Authenticate(usersdata);
-
-            if (token == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok(token);
         }
     }
 }
