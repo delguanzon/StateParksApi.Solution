@@ -58,7 +58,9 @@ builder.Services.AddVersionedApiExplorer(setup =>
     setup.SubstituteApiVersionInUrl = true;
 });
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(); 
+//builder.Services.AddSwaggerGen(c => c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()));
+;
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 
 var app = builder.Build();
