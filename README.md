@@ -14,11 +14,8 @@
     * <a href="#📋-prerequisites">Prerequisites</a>
     * <a href="#⚙️-setup-and-use">Setup and Use</a>
 * <a href="#🛰️-api-documentation">API Documentation</a>
-* <a href="#🤝-contributors">Auxiliary</a>
-    * <a href="#🤝-contributors">Contributors</a>
-    * <a href="#✉️-contact-and-support">Contact</a>
-    * <a href="#⚖️-license">License</a>
-    * <a href="#🌟-acknowledgements">Acknowledgements</a>
+* <a href="#⚖️-license">License</a>
+* <a href="#🌟-acknowledgements">Acknowledgements</a>
     
 ------------------------------
 
@@ -365,15 +362,17 @@ https://localhost:5000/parks/1
 > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
 
 </details>
+
 ------------------------------
+
 ### ⚖️ License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2021 Shawn Lunsford. All Rights Reserved.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2023 Yodel Guanzon. All Rights Reserved.
 
 ```
 MIT License
 
-Copyright (c) 2021 Shawn Lunsford.
+Copyright (c) 2023 Yodel Guanzon.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
