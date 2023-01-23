@@ -280,7 +280,7 @@ https://localhost:5000/parks/1
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `200`         | `application/json`        | <details> <summary>...</summary>{"id": 1,"parkId": "TACWA-S0001","name": "Point Defiance Park","location": "Tacoma, WA","description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.","imageUrl": "../pdp.jpg","rating": 5 } </details>|
-
+</details>
 
 #### Creating/Adding a New Park
 
@@ -303,33 +303,69 @@ https://localhost:5000/parks/1
 
 </details>
 
+#### Updating a Park
 
+<details>
+ <summary><code>PUT</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
 
+##### Parameters
 
-..........................................................................................
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | None      |  required | object (JSON)   | N/A  |
 
+##### Responses
 
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
+> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+
+</details>
+
+#### Deleting a Park
+
+<details>
+ <summary><code>PUT</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> |id         |  required | int                     | The specific park numeric Id                                          |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
+> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+
+</details>
+
+#### Deleting a Park
+
+<details>
+ <summary><code>DELETE</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Delete Park by Id)</code></summary>
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> |id         |  required | int                     | The specific park numeric Id                                          |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `201`         | `text/plain;charset=UTF-8`        | `Deleted successfully`                                         |
+> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+
+</details>
 ------------------------------
-
-### 🤝 Contributors
-
-| Author | GitHub | Email |
-|--------|:------:|:-----:|
-| [Shawn Lunsford](https://linkedin.com/in/LunsfordSpace) | [LunsfordSpace](https://github.com/LunsfordSpace) |  [lunsford.sk@gmail.com](mailto:lunsford.sk@gmail.com) |
-
-------------------------------
-
-### ✉️ Contact and Support
-
-If you have any feedback or concerns, please contact one of the contributors.
-
-<p>
-    <a href="https://github.com/LunsfordSpace/CoffeeTrackerAPI.Solution-API-ReadMe-Example/issues">Report Bug</a> ·
-    <a href="https://github.com/LunsfordSpace/CoffeeTrackerAPI.Solution-API-ReadMe-Example/issues">Request Feature</a>
-</p>
-
-------------------------------
-
 ### ⚖️ License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2021 Shawn Lunsford. All Rights Reserved.
