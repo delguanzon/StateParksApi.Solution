@@ -6,10 +6,10 @@
 
 ------------------------------
 ### <u>Table of Contents</u>
-* <a href="#🌐-about-the-project">About the Project</a>
-    * <a href="#-description">Description</a>
-    * <a href="#-technologies-used">Technology Used</a>
-    * <a href="#-🦠-Known Bugs">Known Bugs</a>
+* <a href="#-🌐-about-the-project">About the Project</a>
+    * <a href="#description">Description</a>
+    * <a href="#technologies-used">Technology Used</a>
+    * <a href="#🦠-Known Bugs">Known Bugs</a>
 * <a href="#🏁-getting-started">Getting Started</a>
     * <a href="#📋-prerequisites">Prerequisites</a>
     * <a href="#⚙️-setup-and-use">Setup and Use</a>
