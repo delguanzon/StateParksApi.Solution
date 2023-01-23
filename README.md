@@ -12,9 +12,9 @@
     * <a href="#-Known Bugs">Known Bugs</a>
 * <a href="#-getting-started">Getting Started</a>
     * <a href="#-prerequisites">Prerequisites</a>
-    * <a href="#-setup-and-use">Setup and Use</a>
-* <a href="#-api-documentation">API Documentation</a>
-* <a href="#-license">License</a>
+    * <a href="#%EF%B8%8F-setup-and-use">Setup and Use</a>
+* <a href="#%EF%B8%8F-api-documentation">API Documentation</a>
+* <a href="#%EF%B8%8F-license">License</a>
 * <a href="#-acknowledgements">Acknowledgements</a>
     
 ------------------------------
@@ -395,7 +395,7 @@ SOFTWARE.
 
 ------------------------------
 
-### 🌟 Acknowledgments
+### 🌟 Acknowledgements
 
 #### [Epicodus](https://www.epicodus.com/)
 >"A school for tech careers... to help people learn the skills they need to get great jobs."
