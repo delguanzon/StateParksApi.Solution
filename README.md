@@ -263,20 +263,24 @@ https://localhost:5000/parks/1
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`        | {
-  "id": 1,
-  "parkId": "TACWA-S0001",
-  "name": "Point Defiance Park",
-  "location": "Tacoma, WA",
-  "description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.",
-  "imageUrl": "../pdp.jpg",
-  "rating": 5
-}                                                    |
-
-##### Example cURL
-
-
+> | `200`         | `application/json`                | `Returns a list of parks in inrements of 5`                         |
 </details>
+
+<details>
+ <summary><code>GET</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Gets Park by Id)</code></summary>
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | id        |  required | int                     | The specific park numeric Id                                          |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`        | <details> <summary>...</summary>{"id": 1,"parkId": "TACWA-S0001","name": "Point Defiance Park","location": "Tacoma, WA","description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.","imageUrl": "../pdp.jpg","rating": 5 } </details>|
+
 
 #### Creating/Adding a New Park
 
