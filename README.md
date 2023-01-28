@@ -203,8 +203,9 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
 
   ..........................................................................................
 
+##### Version 1
 <details>
-  <summary><code>V1</code></summary>
+  <summary><code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code></summary>
 
   ### Parks
   Access information on State and National Parks around you.
@@ -251,7 +252,7 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   #### Listing existing Parks
 
   <details>
-  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code> <code>(Gets all Parks)</code></summary>
+  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code> <code>(Gets all Parks)</code></summary>
 
   ##### Parameters
 
@@ -265,7 +266,7 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   </details>
 
   <details>
-  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Gets Park by Id)</code></summary>
+  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Gets Park by Id)</code></summary>
 
   ##### Parameters
 
@@ -283,7 +284,7 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   #### Creating/Adding a New Park
 
   <details>
-  <summary><code>POST</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code></b></code><code>parks</code><code><b>/</b></code> <code>(Create/Add a Park)</code></summary>
+  <summary><code>POST</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code></b></code><code>parks</code><code><b>/</b></code> <code>(Create/Add a Park)</code></summary>
 
   ##### Parameters
 
@@ -304,7 +305,7 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   #### Updating a Park
 
   <details>
-  <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
+  <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
 
   ##### Parameters
 
@@ -325,49 +326,50 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   #### Deleting a Park
 
   <details>
-  <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
+    <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
 
-  ##### Parameters
+    ##### Parameters
 
-  > | name      |  type     | data type               | description                                                           |
-  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-  > |id         |  required | int                     | The specific park numeric Id                                          |
+    > | name      |  type     | data type               | description                                                           |
+    > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+    > |id         |  required | int                     | The specific park numeric Id                                          |
 
-  ##### Responses
+    ##### Responses
 
-  > | http code     | content-type                      | response                                                            |
-  > |---------------|-----------------------------------|---------------------------------------------------------------------|
-  > | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
-  > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
-  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+    > | http code     | content-type                      | response                                                            |
+    > |---------------|-----------------------------------|---------------------------------------------------------------------|
+    > | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
+    > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+    > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
 
   </details>
 
   #### Deleting a Park
 
   <details>
-  <summary><code>DELETE</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Delete Park by Id)</code></summary>
+    <summary><code>DELETE</code> <code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Delete Park by Id)</code></summary>
 
-  ##### Parameters
+    ##### Parameters
 
-  > | name      |  type     | data type               | description                                                           |
-  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-  > |id         |  required | int                     | The specific park numeric Id                                          |
+    > | name      |  type     | data type               | description                                                           |
+    > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+    > |id         |  required | int                     | The specific park numeric Id                                          |
 
-  ##### Responses
+    ##### Responses
 
-  > | http code     | content-type                      | response                                                            |
-  > |---------------|-----------------------------------|---------------------------------------------------------------------|
-  > | `201`         | `text/plain;charset=UTF-8`        | `Deleted successfully`                                         |
-  > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
-  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+    > | http code     | content-type                      | response                                                            |
+    > |---------------|-----------------------------------|---------------------------------------------------------------------|
+    > | `201`         | `text/plain;charset=UTF-8`        | `Deleted successfully`                                         |
+    > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+    > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
 
   </details>
 
 </details>
 
+##### Version 2
 <details>
-  <summary> <b>Version 2</b> </summary>
+  <summary><code><b>/</b></code><code>api</code><code><b>/</b></code><code>v1</code><code><b>/</b></code></summary>
 
   ### Using the JSON Web Token
   In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
