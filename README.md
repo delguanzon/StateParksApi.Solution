@@ -115,10 +115,16 @@ Found a bug? Email me at <yodelguanzon@gmail.com>
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Port=3306;database=stateparksapi;uid=[USERNAME];pwd=[PASSWORD];"
+  },
+  "JWT": {
+    "Token": [YOUR-TOKEN-HERE]
   }
+
+
 }
   ```
-  3) Change the server, port, and user id as necessary. Replace 'PASSWORD' with relevant MySQL password (set at installation of MySQL).
+  3) Change the server, port, and user id (UID) as necessary. Replace 'PASSWORD' with relevant MySQL password (set at installation of MySQL).
+  4) Replace 'YOUR-TOKEN-HERE' with your desired token/key. This could be any combination of characters, words or a sentence.
 
   #### Database
 
@@ -366,13 +372,14 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
   </details>
 
 </details>
-..........................................................................................End of V1
+------------------------------
 
 ### Version 2
 <details>
   <summary><code><b>/</b></code><code>api</code><code><b>/</b></code><code>v2</code><code><b>/</b></code></summary>
 
   #### Using the JSON Web Token
+
   In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
   * Open Postman and create a POST request using the URL: `http://localhost:5000/api/v2/parks/authenticate`
   * Add the following query to the request as raw data in the Body tab:
@@ -546,6 +553,7 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
 
 </details>
 
+------------------------------
 ------------------------------
 
 ### ⚖️ License
