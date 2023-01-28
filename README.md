@@ -189,8 +189,13 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
 
   #### Example Query
 
+
   ```
-  https://localhost:7100/api/v1/parks/1
+  http://localhost:5152/api/v1/parks/1
+
+  ```
+  ```
+  https://localhost:7100/api/v2/parks/1
   ```
 
   #### Sample JSON Response
