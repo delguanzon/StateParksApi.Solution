@@ -366,6 +366,24 @@ To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to
 
 </details>
 
+<details>
+  <summary> <b>Version 2</b> </summary>
+
+  ### Using the JSON Web Token
+  In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
+  * Open Postman and create a POST request using the URL: `http://localhost:5000/api/parks/authenticate`
+  * Add the following query to the request as raw data in the Body tab:
+  ```
+  {
+      "UserName": "admin",
+      "Password": "password"
+  }
+  ```
+  * The token will be generated in the response. Copy and paste it as the Token paramenter in the Authorization tab:
+  <img src=".\readme\assets\img\auth-jwt.png">  
+
+</details>
+
 ------------------------------
 
 ### ⚖️ License
