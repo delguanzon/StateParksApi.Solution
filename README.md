@@ -121,245 +121,248 @@ Found a bug? Email me at <yodelguanzon@gmail.com>
   3) Change the server, port, and user id as necessary. Replace 'PASSWORD' with relevant MySQL password (set at installation of MySQL).
 
   #### Database
+
   * Using the terminal, Navigate to the main project directory located at ../Factory.Solution/Factory
   * Run ```dotnet restore``` to restore all dependencies (optional)
   * Run ```dotnet ef database update``` command to automatically create the database using the migrations in the Factory Project
        - Optionally, you could run the command `dotnet ef migrations add MigrationName` where `MigrationName` is your custom name for the migration to create your own migration before running the database update command. You could do this if for some reason ../Factory.Solution/Factory/Migrations is missing..
 
   #### Launch the API
+
   1) Navigate to StateParksAPI.Solution/StateParksAPI directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/CoffeeTrackerAPI.Solution/CoffeeTrackerAPI`).
   2) Run the command `dotnet run` to have access to the API in Postman or browser.
 
 ------------------------------
 
 ## 🛰️ API Documentation
+
 Explore the API endpoints in Postman or a browser. You will not be able to utilize authentication in a browser.
 
-### Using Swagger Documentation 
-* To explore the StateParks API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:5000/swagger`
+### Using Swagger Documentation
+
+* To explore the StateParks API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:5152/swagger`
 * Alternatively, you can use `dotnet watch run` to open a watcher and automatically open swagger in a browser
 
 
 ### Versioning
 
 API have two versions, V1 and V2. API Endpoints are identical except that V2 requires authentication via JWT before accessing the API.
-Please also take note that V2 is not possible to be used via Swagger due since the functionality for authentication for Swagger have not been added yet.
-
-### Using the JSON Web Token
-In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
-* Open Postman and create a POST request using the URL: `http://localhost:5000/api/parks/authenticate`
-* Add the following query to the request as raw data in the Body tab:
-```
-{
-    "UserName": "admin",
-    "Password": "password"
-}
-```
-* The token will be generated in the response. Copy and paste it as the Token paramenter in the Authorization tab:
-<img src=".\readme\assets\img\auth-jwt.png">  
+Please also take note that V2 is not possible to test via Swagger since the functionality for authentication have not been added yet although the documentation is available. Please use Postman for testing V2 of the API instead.
 
 ### Pagination
+
 The StatePark API returns a default of 5 results per page.
 To modify this, use the query parameters `pageSize` to specify how many items will return for display.
 Use query parameter `pageNumber` to navigate through pages.
 
 #### Example Query
+
 ```
-https://localhost:5000/api/parks/?pageSize=3&pageNumber=2
+http://localhost:5152/api/v1/parks/?pageSize=3&pageNumber=2
 ```
 
 To use default, _don't include_ `pageSize` and `pageNumber` or set them equal to zero.
 
 ..........................................................................................
 
+
+
 ### Endpoints
-Base URL: `https://localhost:5000`
 
-#### HTTP Request Structure
-```
-GET /api/{component}
-POST /api/{component}
-GET /api/{component}/{id}
-PUT /api/{component}/{id}
-DELETE /api/{component}/{id}
-```
+  Base URL (HTTP): `http://localhost:5152`
+  Base URL (HTTPS): `https://localhost:7100`
 
-#### Example Query
+  #### HTTP Request Structure
+  ```
+  GET /api/{version}/{component}
+  POST /api/{version}/{component}
+  GET /api/{version}/{component}/{id}
+  PUT /api/{version}/{component}/{id}
+  DELETE /api/{version}/{component}/{id}
+  ```
 
-```
-https://localhost:5000/api/parks/1
-```
+  #### Example Query
 
-#### Sample JSON Response
+  ```
+  https://localhost:7100/api/v1/parks/1
+  ```
 
-```
-{
-  "id": 1,
-  "parkId": "TACWA-S0001",
-  "name": "Point Defiance Park",
-  "location": "Tacoma, WA",
-  "description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.",
-  "imageUrl": "../pdp.jpg",
-  "rating": 5
-}
-```
+  #### Sample JSON Response
 
-..........................................................................................
+  ```
+  {
+    "id": 1,
+    "parkId": "TACWA-S0001",
+    "name": "Point Defiance Park",
+    "location": "Tacoma, WA",
+    "description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.",
+    "imageUrl": "../pdp.jpg",
+    "rating": 5
+  }
+  ```
 
-### Parks
-Access information on State and National Parks around you.
-
-#### HTTP Request
-```
-GET /api/parks
-POST /api/parks
-GET /api/parks/{id}
-PUT /api/parks/{id}
-DELETE /api/parks/{id}
-```
-
-#### Path Parameters
-| Parameter | Type | Default | Required | Description |
-| :---: | :---: | :---: | :---: | --- |
-| id | int | none | true | Id for the park in the schema.
-| parkId | string | none | true | Park Code which is different from Id.
-| name | string | none | true | Name of the Park.
-| location | string | none | true | Location of the park |
-| description | string | none | true | Brief description of the park. |
-| imageUrl | string | none | false | Location for the image/thumbnail of the park. |
-| rating | int | none | false | Park Rating |
-
-#### Example Query 
-```
-https://localhost:5000/parks/1
-```
-
-#### Sample JSON Response
-```
-{
-  "id": 1,
-  "parkId": "TACWA-S0001",
-  "name": "Point Defiance Park",
-  "location": "Tacoma, WA",
-  "description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.",
-  "imageUrl": "../pdp.jpg",
-  "rating": 5
-}
-```
-
-#### Listing existing Parks
+  ..........................................................................................
 
 <details>
- <summary><code>GET</code><code><b>/</b></code><code>parks</code><code><b>/</b></code> <code>(Gets all Parks)</code></summary>
+  <summary><code>V1</code></summary>
 
-##### Parameters
+  ### Parks
+  Access information on State and National Parks around you.
 
-> None
+  #### HTTP Request
+  ```
+  GET /api/v1/parks
+  POST /api/v1/parks
+  GET /api/v1/parks/{id}
+  PUT /api/v1/parks/{id}
+  DELETE /api/v1/parks/{id}
+  ```
 
-##### Responses
+  #### Path Parameters
+  | Parameter | Type | Default | Required | Description |
+  | :---: | :---: | :---: | :---: | --- |
+  | id | int | none | true | Id for the park in the schema.
+  | parkId | string | none | true | Park Code which is different from Id.
+  | name | string | none | true | Name of the Park.
+  | location | string | none | true | Location of the park |
+  | description | string | none | true | Brief description of the park. |
+  | imageUrl | string | none | false | Location for the image/thumbnail of the park. |
+  | rating | int | none | false | Park Rating |
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`                | `Returns a list of parks in inrements of 5`                         |
-</details>
+  #### Example Query 
+  ```
+  (HTTP) http://localhost:5152/api/v1/parks/1
+  (HTTPS) https://localhost:7100/api/v1/parks/1
+  ```
 
-<details>
- <summary><code>GET</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Gets Park by Id)</code></summary>
+  #### Sample JSON Response
+  ```
+  {
+    "id": 1,
+    "parkId": "TACWA-S0001",
+    "name": "Point Defiance Park",
+    "location": "Tacoma, WA",
+    "description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.",
+    "imageUrl": "../pdp.jpg",
+    "rating": 5
+  }
+  ```
 
-##### Parameters
+  #### Listing existing Parks
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id        |  required | int                     | The specific park numeric Id                                          |
+  <details>
+  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code> <code>(Gets all Parks)</code></summary>
 
-##### Responses
+  ##### Parameters
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `application/json`        | <details> <summary>...</summary>{"id": 1,"parkId": "TACWA-S0001","name": "Point Defiance Park","location": "Tacoma, WA","description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.","imageUrl": "../pdp.jpg","rating": 5 } </details>|
-</details>
+  > None
 
-#### Creating/Adding a New Park
+  ##### Responses
 
-<details>
- <summary><code>POST</code> <code><b>/</b></code></b></code><code>parks</code><code><b>/</b></code> <code>(Create/Add a Park)</code></summary>
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `200`         | `application/json`                | `Returns a list of parks in inrements of 5`                         |
+  </details>
 
-##### Parameters
+  <details>
+  <summary><code>GET</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Gets Park by Id)</code></summary>
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON)   | N/A  |
+  ##### Parameters
 
-##### Responses
+  > | name      |  type     | data type               | description                                                           |
+  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+  > | id        |  required | int                     | The specific park numeric Id                                          |
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Park created successfully`                                         |
-> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
-> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+  ##### Responses
 
-</details>
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `200`         | `application/json`        | <details> <summary>...</summary>{"id": 1,"parkId": "TACWA-S0001","name": "Point Defiance Park","location": "Tacoma, WA","description": "Point Defiance Park is a 760-acre park in Tacoma, Washington, United States. It is located on the tip of the peninsula that separates Commencement Bay from Puget Sound. The park is operated by the City of Tacoma and is the largest park in the city.","imageUrl": "../pdp.jpg","rating": 5 } </details>|
+  </details>
 
-#### Updating a Park
+  #### Creating/Adding a New Park
 
-<details>
- <summary><code>PUT</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
+  <details>
+  <summary><code>POST</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code></b></code><code>parks</code><code><b>/</b></code> <code>(Create/Add a Park)</code></summary>
 
-##### Parameters
+  ##### Parameters
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON)   | N/A  |
+  > | name      |  type     | data type               | description                                                           |
+  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+  > | None      |  required | object (JSON)   | N/A  |
 
-##### Responses
+  ##### Responses
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
-> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
-> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `201`         | `text/plain;charset=UTF-8`        | `Park created successfully`                                         |
+  > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
 
-</details>
+  </details>
 
-#### Deleting a Park
+  #### Updating a Park
 
-<details>
- <summary><code>PUT</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
+  <details>
+  <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
 
-##### Parameters
+  ##### Parameters
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> |id         |  required | int                     | The specific park numeric Id                                          |
+  > | name      |  type     | data type               | description                                                           |
+  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+  > | None      |  required | object (JSON)   | N/A  |
 
-##### Responses
+  ##### Responses
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
-> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
-> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
+  > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
 
-</details>
+  </details>
 
-#### Deleting a Park
+  #### Deleting a Park
 
-<details>
- <summary><code>DELETE</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Delete Park by Id)</code></summary>
+  <details>
+  <summary><code>PUT</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Update Park by Id)</code></summary>
 
-##### Parameters
+  ##### Parameters
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> |id         |  required | int                     | The specific park numeric Id                                          |
+  > | name      |  type     | data type               | description                                                           |
+  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+  > |id         |  required | int                     | The specific park numeric Id                                          |
 
-##### Responses
+  ##### Responses
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Deleted successfully`                                         |
-> | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
-> | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `201`         | `text/plain;charset=UTF-8`        | `Updated successfully`                                         |
+  > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+
+  </details>
+
+  #### Deleting a Park
+
+  <details>
+  <summary><code>DELETE</code> <code><b>/</b></code><code>api</code><code><code><b>/</b></code><code>v1</code><code><b>/</b></code><code>parks</code><code><b>/</b></code><code>{id}</code> <code>(Delete Park by Id)</code></summary>
+
+  ##### Parameters
+
+  > | name      |  type     | data type               | description                                                           |
+  > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+  > |id         |  required | int                     | The specific park numeric Id                                          |
+
+  ##### Responses
+
+  > | http code     | content-type                      | response                                                            |
+  > |---------------|-----------------------------------|---------------------------------------------------------------------|
+  > | `201`         | `text/plain;charset=UTF-8`        | `Deleted successfully`                                         |
+  > | `400`         | `application/json`                | `{"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1","title": "Bad Request","status": 400,"traceId":"00-ec3ce56b7ab5afb0bf4aec5a4b3a22f9-694189daed0c5ec0-00"}` |
+  > | `401`         | `text/html;charset=utf-8`         | `Unauthorized`                                                      |
+
+  </details>
 
 </details>
 
